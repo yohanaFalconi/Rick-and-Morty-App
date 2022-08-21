@@ -1,5 +1,6 @@
 import {useState, useEffect } from 'react'
 import Characters from './Characters'
+import './index.css';
 
 
 const Cards = () => {
@@ -8,7 +9,9 @@ const Cards = () => {
     const fetchCharacters = (initUrl) => {
         fetch(initUrl)
         .then(response => response.json())
-        .then(data => setCharacters(data.results))
+        .then(data => {
+          console.log(data.results);
+          setCharacters(data.results)})
         .catch(err => console.error(err));
     }
     
@@ -20,8 +23,11 @@ const Cards = () => {
 
     return (
       <>
-        <div className="container bg-blue"></div>
-        <Characters features={characters}/>
+        <div className="container bg-dark mt-5">
+          <section className="row justify-content-center align-items-center">
+            <Characters features={characters}/>
+          </section>
+        </div>
       </>
     )
 };
